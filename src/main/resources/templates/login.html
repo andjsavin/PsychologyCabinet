@@ -1,0 +1,43 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="template :: header" />
+<body>
+	<nav th:replace="template :: navigation" />
+
+	<div class="jumbotron">
+		<div class="container">
+			<div th:replace="template :: messages" />
+			<form class="form-horizontal" method="post" th:action="@{/login}">
+				<div>
+					<!-- Login -->
+					<div class="form-group">
+						<label class="col-md-4 control-label" for="textinput">Login</label>
+						<div class="col-md-4">
+							<input id="textinput" name="username" type="text" placeholder=""
+								class="form-control input-md" />
+						</div>
+					</div>
+					<!-- Password -->
+					<div class="form-group">
+						<label class="col-md-4 control-label" for="password">Password</label>
+						<div class="col-md-4">
+							<input id="password" name="password" type="password"
+								placeholder="" class="form-control input-md" />
+						</div>
+					</div>
+					<!-- Button -->
+					<div class="form-group">
+						<label class="col-md-4 control-label" for="singlebutton"></label>
+						<div class="col-md-4">
+							<button id="singlebutton" name="singlebutton"
+								class="btn btn-primary">Login</button>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<div th:replace="template :: footer" />
+</body>
+</html>

@@ -1,0 +1,16 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="template :: header" />
+<body>
+	<nav th:replace="template :: navigation" />
+
+	<div class="jumbotron">
+		<div class="container">
+			<div th:replace="template :: messages" />
+				<div class="col-sm-9"></div>
+    </div>
+</div>
+<div th:replace="template :: footer" />
+</body>
+</html>

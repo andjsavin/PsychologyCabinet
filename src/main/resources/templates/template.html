@@ -1,0 +1,75 @@
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<head th:fragment="header">
+<meta charset="utf-8" />
+<meta http-equiv="content-type" content="text/html" />
+<title th:text="${title}">Przychodnia psychologiczna</title>
+<link th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap.min.css}"
+	rel="stylesheet" media="screen" />
+<script th:src="@{/webjars/jquery/2.1.4/jquery.min.js}" />
+<script th:src="@{/webjars/bootstrap/3.3.5/js/bootstrap.js}" />
+<link th:href="@{/css/style.css}" rel="stylesheet" media="screen" />
+</head>
+<nav class="navbar navbar-inverse navbar-fixed-top"
+	th:fragment="navigation">
+	<div class="container">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="/" th:text="#{navbar.title}"></a>
+		</div>
+		<ul class="nav navbar-nav " sec:authorize="isAuthenticated()">
+
+			<li><a href="/rest/visit" th:text="#{navbar.visits}"
+				sec:authorize="hasAuthority('admin')"></a></li>
+			<li><a href="/rest/test" th:text="#{navbar.tests}"
+				sec:authorize="hasAuthority('admin')"></a></li>
+
+			<li><a href="/application" th:text="#{navbar.registrationVisit}"
+				sec:authorize="hasAuthority('user')"></a></li>
+				
+			<li><a href="/visits" th:text="#{navbar.myvisits}"
+				sec:authorize="hasAuthority('user')"></a></li>
+
+			<li><a href="/admin" th:text="#{navbar.users}"
+				sec:authorize="hasAuthority('admin')"></a></li>
+
+		</ul>
+
+		<ul>
+			<span style="float: right">
+				<ul class="nav navbar-nav " sec:authorize="isAnonymous()">
+					<li><a href="/login" th:text="#{navbar.login}"></a></li>
+					<li><a href="/registration" th:text="#{navbar.registration}"></a></li>
+				</ul>
+				<ul class="nav navbar-nav " sec:authorize="isAuthenticated()">
+					<li><a href="/logout" th:text="#{navbar.logout}"></a></li>
+					<li><a href="/profile" th:text="#{navbar.profile}"></a></li>
+				</ul> <a href="?lang=pl">pl</a> | <a href="?lang=en">en</a>
+			</span>
+		</ul>
+	</div>
+</nav>
+<body>
+	<div th:fragment="messages">
+		<div class="alert alert-danger" th:if="${error != null}"
+			th:text="#{${error}}" />
+		<div class="alert alert-success" th:if="${success != null}"
+			th:text="#{${success}}" />
+	</div>
+
+	<div class="container" th:fragment="footer">
+
+		<div class="row">
+			<div class="container">
+				<span class="text-muted">Wirtualna przychodnia pomoże w
+					każdym problemie </span>
+			</div>
+		</div>
+
+		<footer>
+			<p>Przychodnia psychoogiczna zapraszamy</p>
+		</footer>
+
+	</div>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="template :: header" />
+<body>
+<div class="container">
+<nav th:replace="template :: navigation" />
+    <div th:if="${not #lists.isEmpty(psychs)}">
+        <h2>Psychologists</h2>
+        <table class="table table-striped">
+            <tr>
+                <th>Name</th>
+                <th>Surname</th>
+                <th></th>
+            </tr>
+            <tr th:each="psych : ${psychs}">
+                <td th:text="${psych.name}"></td>
+                <td th:text="${psych.surname}"></td>
+                <td><a th:href="${'/datechoose/' + psych.id}">Apply</a> </td>
+            </tr>
+        </table>
+    </div>
+</div>
+</body>
+</html>

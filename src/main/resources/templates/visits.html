@@ -1,0 +1,28 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="template :: header" />
+<body>
+<div class="container">
+<nav th:replace="template :: navigation" />
+    <div th:if="${not #lists.isEmpty(visits)}">
+        <h2>Psychologists</h2>
+        <table class="table table-striped">
+            <tr>
+            <th>Title</th>
+                <th>Psych</th>
+                <th>StartTime</th>
+                <th>End Time</th>
+                <th></th>
+            </tr>
+            <tr th:each="visit : ${visits}">
+            <td th:text="${visit.title}"></td>
+                <td th:text="${visit.psychologist == null ? '' : visit.psychologist.surname}"></td>
+                <td th:text="${visit.startDate}"></td>
+				<td th:text="${visit.endDate}"></td>
+            </tr>
+        </table>
+    </div>
+</div>
+</body>
+</html>

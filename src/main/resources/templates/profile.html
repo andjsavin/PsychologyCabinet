@@ -1,0 +1,65 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="template :: header" />
+<body>
+	<nav th:replace="template :: navigation" />
+
+
+	<div class="jumbotron">
+		<div class="container">
+			<h2 th:text="#{user.info}"></h2>
+			<div th:replace="template :: messages" />
+			<form class="form-horizontal" role="form" th:action="@{/profile}"
+				th:object="${user}" method="post">
+				
+				<input name="movie" type="hidden" th:field="*{id}" th:value="*{id}" />
+				
+				<div class="form-group">
+					<label for="firstName" class="col-sm-3 control-label"
+						th:text="#{registration.first.name}">First Name</label>
+					<div class="col-sm-4">
+						<input type="text" id="firstName" placeholder=""
+							class="form-control" autofocus="true" th:field="*{firstname}"
+							required="true" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="lastName" class="col-sm-3 control-label"
+						th:text="#{registration.last.name}">Last Name</label>
+					<div class="col-sm-4">
+						<input type="text" id="lastName" placeholder=""
+							class="form-control" required="true" autofocus="true"
+							th:field="*{lastname}" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="email" class="col-sm-3 control-label"
+						th:text="#{registration.email}">Email</label>
+					<div class="col-sm-4">
+						<input type="email" id="email" placeholder="" class="form-control"
+							th:field="*{email}" required="true" />
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="active" class="col-sm-3 control-label"
+						th:text="#{active}"></label>
+					<div class="col-sm-4">
+						<input type="checkbox" id="active" placeholder=""
+							class="form-control" autofocus="true" th:field="*{active}" />
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="col-sm-3 col-sm-offset-3">
+						<button type="submit" class="btn btn-primary btn-block"
+							th:text="#{save}">Save</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+
+</body>
+</html>
